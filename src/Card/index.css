@@ -1,0 +1,165 @@
+.card {
+    height: 100%;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 3px 5px 0 #00000047;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.card > .header {
+    margin: 10px;
+    margin-bottom: 15px;
+}
+
+.card > .header h1 {
+    font-size: 3rem;
+    line-height: 3rem;
+    height: 3rem;
+    margin-bottom: 0;
+}
+
+.card > .header .desc h4 {
+    display: inline;
+    height: 1.3rem;
+}
+
+.card > .header .desc h4:not(:last-child)::after {
+    content: "．";
+    margin: 0 5px;
+}
+
+.card > .header h4 {
+    color: #707070;
+}
+
+.card .body .weather > .header {
+    display: flex;
+    margin: 0 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.card .body .weather > .header .temp {
+    display: flex;
+    align-items: flex-end;
+}
+
+.card .body .weather > .header .temp h1 {
+    font-size: 6rem;
+    height: 6rem;
+    font-weight: 200;
+    line-height: 6rem;
+}
+
+.card .body .weather > .header .temp::after {
+    content: "°C";
+    font-size: 2rem;
+    font-weight: 200;
+    color: #3a3a3a;
+    margin-left: 8px;
+}
+
+.card .body .weather > .header .status img {
+    width: 6rem;
+}
+
+.card .body .weather > .extra {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.card .body .weather > .extra .weatherBlock {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 8px;
+}
+
+.card .body .weather > .extra .weatherBlock span {
+    font-size: 20px;
+    line-height: 20px;
+    color: #323232;
+    font-weight: 400;
+    height: 20px;
+}
+
+.card .footer > div {
+    width: 100%;
+    position: relative;
+    height: 15px;
+}
+
+.card .footer > div > div {
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+
+.card .footer > div > div span {
+    height: 25px;
+    color: #707070;
+}
+
+/* skt */
+.skt.card > .header h1 {
+    content: "";
+    background-color: #808080;
+    border-radius: 5px;
+    width: 250px;
+    animation: sktAni 2s infinite linear;
+}
+
+.skt.card > .header .desc {
+    content: "";
+    background-color: #808080;
+    border-radius: 5px;
+    width: 150px;
+    margin: 5px 0;
+    animation: sktAni 2s infinite linear;
+}
+
+.skt.card .body .weather > .header .temp h1 {
+    content: "";
+    width: 150px;
+    background-color: #808080;
+    border-radius: 5px;
+    animation: sktAni 2s infinite linear;
+}
+
+.skt.card .body .weather > .header .status {
+    background-color: #808080;
+    border-radius: 5px;
+    width: 6rem;
+    height: 6rem;
+    animation: sktAni 2s infinite linear;
+}
+
+.skt.card .body .weather > .extra .weatherBlock span {
+    background-color: #808080;
+    border-radius: 5px;
+    width: 100px;
+    animation: sktAni 2s infinite linear;
+}
+
+.skt.card .footer > div > div span:not(:first-child) {
+    background-color: #808080;
+    border-radius: 5px;
+    width: 80px;
+    animation: sktAni 2s infinite linear;
+}
+
+@keyframes sktAni {
+    0% {
+        background-color: #79797980;
+    }
+
+    50% {
+        background-color: #55555580
+    }
+
+    100% {
+        background-color: #79797980;
+    }
+}

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Poppins:wght@100;200;400&display=swap');
+
+* {
+    font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: .8s;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #666666;
+
+    background: -moz-linear-gradient(-45deg, #5f32ff 0%, #1c3a93 34%, #1c6daf 68%, #7db9e8 100%);
+    background: -webkit-linear-gradient(-45deg, #5f32ff 0%, #1c3a93 34%, #1c6daf 68%, #7db9e8 100%);
+    background: linear-gradient(135deg, #5f32ff 0%, #1c3a93 34%, #1c6daf 68%, #7db9e8 100%);
+}
+
+#app {
+    height: 100%;
+}

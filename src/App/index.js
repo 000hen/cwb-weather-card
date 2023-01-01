@@ -11,7 +11,7 @@ export default () => {
         city: "",
         temp: 0,
         weatherName: "",
-        update: "2022/01/01 12:00:00",
+        updateTime: "2022/01/01 12:00:00",
         extraData: {
             uv: 0,
             rain: 0,
@@ -20,6 +20,13 @@ export default () => {
         },
         weatherCode: 0,
         rainPossibility: 0,
+        refresh: () => {
+            setData({
+                ...data,
+                isFetch: false
+            });
+            setFresh(Math.random());
+        }
     });
     const [fresh, setFresh] = useState(0);
 
@@ -44,9 +51,9 @@ export default () => {
             let city = loc.querySelector("townVillageItem > officeName").textContent;
             const citySearch = findLocation(city)[0];
 
-            Promise.all([getNowWeather(citySearch[1]), getWeatherForecast(citySearch[2])]).then(([data1, data2]) => {
-                const d1Result = data1.records.location[0];
-                const d2Result = data2.records.location[0];
+            Promise.all([getNowWeather(citySearch[1]), getWeatherForecast(citySearch[2])]).then((datas) => {
+                const d1Result = datas[0].records.location[0];
+                const d2Result = datas[1].records.location[0];
                 const weatherResult = formatData(d1Result.weatherElement);
                 const forecastResult = formatData(d2Result.weatherElement);
 
@@ -56,7 +63,7 @@ export default () => {
                     city: d1Result.locationName,
                     temp: Math.round(weatherResult["TEMP"]),
                     weatherName: weatherResult["Weather"],
-                    update: d1Result.time.obsTime,
+                    updateTime: d1Result.time.obsTime,
                     extraData: {
                         uv: weatherResult["H_UVI"],
                         rain: Number(forecastResult["PoP"].parameterName),
@@ -85,21 +92,7 @@ export default () => {
             width: "95%",
             maxWidth: "500px"
         }}>
-            <Card
-                showSkt={!data.isFetch}
-                city={data.city}
-                weatherName={data.weatherName}
-                updateTime={data.update}
-                temp={data.temp}
-                weatherCode={data.weatherCode}
-                extraData={data.extraData}
-                refresh={() => {
-                    setData({
-                        ...data,
-                        isFetch: false
-                    });
-                    setFresh(Math.random());
-                }} />
+            <Card {...data} />
         </div>
     </div>;
 }

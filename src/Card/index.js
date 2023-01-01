@@ -7,7 +7,7 @@ import { ReactComponent as UVIcon } from '../Icons/uv.svg';
 
 import WeatherIcon from "./WeatherIcon";
 
-export default ({ showSkt, city, weatherName, temp, weatherCode, refresh = () => { }, extraData: {
+export default ({ isFetch, city, weatherName, temp, weatherCode, refresh = () => { }, extraData: {
     rain = 0,
     flow = 0,
     uv = 0,
@@ -15,26 +15,26 @@ export default ({ showSkt, city, weatherName, temp, weatherCode, refresh = () =>
 }, updateTime }) => {
     const ExtraContent = ({ Icon, text }) => <div className="weatherBlock">
         <Icon height={30} width={80} />
-        <span>{ !showSkt && text }</span>
+        <span>{ isFetch && text }</span>
     </div>
 
-    return <div className={"card " + (showSkt && "skt")}>
+    return <div className={"card " + (!isFetch && "skt")}>
         <div className="header">
-            <h1>{ !showSkt && city }</h1>
+            <h1>{ isFetch && city }</h1>
             <div className="desc">
-                <h4>{ !showSkt && weatherName }</h4>
-                <h4>{ !showSkt && extraDesc }</h4>
+                <h4>{ isFetch && weatherName }</h4>
+                <h4>{ isFetch && extraDesc }</h4>
             </div>
         </div>
         <div className="body">
             <div className="weather">
                 <div className="header">
                     <div className="temp">
-                        <h1>{ !showSkt && temp }</h1>
+                        <h1>{ isFetch && temp }</h1>
                     </div>
 
                     <div className="status">
-                        {!showSkt && <WeatherIcon weatherCode={weatherCode} timeType={(new Date()).getHours() < 6 || (new Date()).getHours() > 16 ? 1 : 0} />}
+                        {isFetch && <WeatherIcon weatherCode={weatherCode} timeType={(new Date()).getHours() < 6 || (new Date()).getHours() > 16 ? 1 : 0} />}
                     </div>
                 </div>
 
@@ -48,12 +48,12 @@ export default ({ showSkt, city, weatherName, temp, weatherCode, refresh = () =>
                     <div>
                         <div>
                             <span>最後更新時間：</span>
-                            <span>{!showSkt && Intl.DateTimeFormat(navigator.language, {
+                            <span>{isFetch && Intl.DateTimeFormat(navigator.language, {
                                 hour: 'numeric',
                                 minute: 'numeric',
                             }).format(new Date(updateTime))}</span>
                             <a onClick={() => {
-                                if (showSkt) return;
+                                if (isFetch) return;
                                 refresh();
                             }} className="refreshIcon">
                                <RefreshIcon height={15} width={15} style={{

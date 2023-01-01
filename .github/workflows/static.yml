@@ -31,8 +31,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: | 
-          echo "GENERATE_SOURCEMAP=false" > .env
-          echo "REACT_APP_CWB_API_KEY=${{ secrets.CWB_API_KEY }}" > .env
+          echo "GENERATE_SOURCEMAP=false" >> .env
+          echo "REACT_APP_CWB_API_KEY=${{ secrets.CWB_API_KEY }}" >> .env
       - uses: actions/setup-node@v3
         with:
           node-version: 16

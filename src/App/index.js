@@ -49,7 +49,7 @@ export default () => {
             let g = await geo();
             let loc = await geoAPI(g.coords.latitude, g.coords.longitude);
             let city = loc.querySelector("townVillageItem > officeName").textContent;
-            const citySearch = findLocation(city)[0];
+            const citySearch = findLocation(city.replace("台", "臺"))[0];
 
             Promise.all([getNowWeather(citySearch[1]), getWeatherForecast(citySearch[2])]).then((datas) => {
                 const d1Result = datas[0].records.location[0];

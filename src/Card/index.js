@@ -34,7 +34,7 @@ export default ({ showSkt, city, weatherName, temp, weatherCode, refresh = () =>
                     </div>
 
                     <div className="status">
-                        <WeatherIcon weatherCode={weatherCode} timeType={(new Date()).getHours() < 6 || (new Date()).getHours() > 16 ? 1 : 0} />
+                        {!showSkt && <WeatherIcon weatherCode={weatherCode} timeType={(new Date()).getHours() < 6 || (new Date()).getHours() > 16 ? 1 : 0} />}
                     </div>
                 </div>
 
@@ -52,7 +52,10 @@ export default ({ showSkt, city, weatherName, temp, weatherCode, refresh = () =>
                                 hour: 'numeric',
                                 minute: 'numeric',
                             }).format(new Date(updateTime))}</span>
-                            <a onClick={refresh}>
+                            <a onClick={() => {
+                                if (showSkt) return;
+                                refresh();
+                            }} className="refreshIcon">
                                <RefreshIcon height={15} width={15} style={{
                                     padding: 5
                                 }} />

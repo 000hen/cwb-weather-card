@@ -102,6 +102,13 @@
     color: #707070;
 }
 
+.card .footer > div > div .refreshIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* skt */
 .skt.card > .header h1 {
     content: "";
@@ -139,7 +146,7 @@
 .skt.card .body .weather > .extra .weatherBlock span {
     background-color: #808080;
     border-radius: 5px;
-    width: 100px;
+    width: 100%;
     animation: sktAni 2s infinite linear;
 }
 
@@ -149,6 +156,11 @@
     width: 80px;
     animation: sktAni 2s infinite linear;
 }
+
+.skt.card .footer > div > div .refreshIcon svg {
+    animation: round .8s infinite;
+}
+
 
 @keyframes sktAni {
     0% {
@@ -161,5 +173,15 @@
 
     100% {
         background-color: #79797980;
+    }
+}
+
+@keyframes round {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
     }
 }

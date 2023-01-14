@@ -19,14 +19,7 @@ export default () => {
             extraDesc: ""
         },
         weatherCode: 0,
-        rainPossibility: 0,
-        refresh: () => {
-            setData({
-                ...data,
-                isFetch: false
-            });
-            setFresh(Math.random());
-        }
+        rainPossibility: 0
     });
     const [fresh, setFresh] = useState(0);
 
@@ -92,7 +85,13 @@ export default () => {
             width: "95%",
             maxWidth: "500px"
         }}>
-            <Card {...data} />
+            <Card {...data} refresh={() => {
+                setData({
+                    ...data,
+                    isFetch: false
+                });
+                setFresh(Math.random());
+            }} />
         </div>
     </div>;
 }

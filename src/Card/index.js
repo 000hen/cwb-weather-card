@@ -53,7 +53,7 @@ export default ({ isFetch, city, weatherName, temp, weatherCode, refresh = () =>
                                 minute: 'numeric',
                             }).format(new Date(updateTime))}</span>
                             <a onClick={() => {
-                                if (isFetch) return;
+                                if (!isFetch) return;
                                 refresh();
                             }} className="refreshIcon">
                                <RefreshIcon height={15} width={15} style={{

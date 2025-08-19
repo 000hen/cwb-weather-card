@@ -1,7 +1,7 @@
 import locations from "./locations";
 
 const API_KEY = process.env.REACT_APP_CWB_API_KEY;
-const API_HOST = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/";
+const API_HOST = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/";
 
 export const CWBApi = async (apiName, partments) => {
     const searchPartments = (new URLSearchParams({
